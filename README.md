@@ -5,7 +5,7 @@ Use:
 ```
 use VisitorLog\VisitorLog;
 
-session_start()
+session_start();
 
 // log every visitor
 $visitor = new VisitorLog(false);
