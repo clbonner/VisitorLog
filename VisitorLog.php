@@ -8,7 +8,6 @@
 namespace VisitorLog;
 
 date_default_timezone_set('UTC');
-session_start();
 
 /*
  * When creating a new object you can set it to true/false, depending if you
