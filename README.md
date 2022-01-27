@@ -3,7 +3,7 @@ A website visitor logger.
 
 Use:
 ```
-use VisitorLog;
+use VisitorLog\VisitorLog;
 
 // log every visitor
 $visitor = new VisitorLog(false);
