@@ -27,6 +27,7 @@ class VisitorLog
         if (!file_exists("visitors.csv")) {
             if ($file = $this->openLogFile()) {
                 fwrite($file, "IP address,timestamp\n");
+                fclose($file);
             }
         }
     }
@@ -63,6 +64,7 @@ class VisitorLog
         if ($file = $this->openLogFile()) {
             $visitor = $_SERVER['REMOTE_ADDR'] ."," .date('l jS \of F Y h:i:s A') ."\n";
             fwrite($file, $visitor);
+            fclose($file);
         }
     }
 }
