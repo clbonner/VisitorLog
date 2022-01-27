@@ -22,6 +22,13 @@ class VisitorLog
     public function __construct($UNIQUE=true)
     {
         $this->UNIQUE = $UNIQUE;
+
+        // add column headers to new file
+        if (!file_exists("visitors.csv")) {
+            if ($file = $this->openLogFile()) {
+                fwrite($file, "IP address,timestamp\n");
+            }
+        }
     }
 
     public function log()
@@ -41,15 +48,21 @@ class VisitorLog
         }
     }
 
+    private function openLogFile() {
+        if ($file = fopen("visitors.csv", "a")) {
+            return $file;
+        }
+        else {
+            print("Could not open log file.");
+            return false;
+        }
+    }
+
     private function logVisit()
     {
-        try {
-            $file = fopen("visitors.csv", "a");
+        if ($file = $this->openLogFile()) {
             $visitor = $_SERVER['REMOTE_ADDR'] ."," .date('l jS \of F Y h:i:s A') ."\n";
             fwrite($file, $visitor);
-        }
-        catch (TypeError) {
-            print("Could not open log file.");
         }
     }
 }
