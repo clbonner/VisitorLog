@@ -3,6 +3,7 @@ A website visitor logger. Logs IP address and date/time in CSV file called visit
 
 Use:
 ```
+require(__DIR__ ."/VisitorLog.php");
 use VisitorLog\VisitorLog;
 
 session_start();
